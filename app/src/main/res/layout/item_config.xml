@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_config_title"
+        android:textColor="@color/title_grey"
+        android:text="Test"
+        android:textSize="@dimen/title_text"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/default_padding"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_primary_config"
+        android:textColor="@android:color/black"
+        tools:text="@string/app_name"
+        android:textSize="@dimen/sub_title_text"
+        android:layout_marginTop="@dimen/default_padding"
+        android:paddingStart="@dimen/default_margin"
+        android:gravity="start"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_config_title"
+        app:layout_constraintEnd_toStartOf="@id/guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_secondary_config"
+        android:textColor="@android:color/black"
+        tools:text="@string/app_name"
+        android:textSize="@dimen/sub_title_text"
+        android:layout_marginTop="@dimen/default_padding"
+        android:gravity="end"
+        android:textStyle="bold"
+        android:paddingEnd="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/tv_config_title"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/chevron"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_common_config"
+        android:textColor="@android:color/black"
+        tools:text="@string/app_name"
+        android:textSize="@dimen/sub_title_text"
+        android:layout_marginTop="@dimen/default_padding"
+        android:gravity="end"
+        android:textStyle="bold"
+        android:paddingEnd="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/tv_config_title"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:layout_width="@dimen/chevron_size"
+        android:layout_height="@dimen/chevron_size"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/chevron"
+        android:id="@+id/chevron"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/grey"
+        android:layout_marginTop="@dimen/default_padding"
+        app:layout_constraintTop_toBottomOf="@id/tv_common_config"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

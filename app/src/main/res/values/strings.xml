@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Door Config</string>
+    <string name="search_hint">Search Parameter</string>
+    <string name="primary_door">Primary</string>
+    <string name="Secondary_door">Secondary</string>
+
+    <string name="save">Save</string>
+    <string name="config_description">If a lock is installed, check which %1$s that the lock needs</string>
+    <string name="common_door">Primary and Secondary</string>
+    <string name="default_config">Default value: %1$s</string>
+    <string name="selected_range">Selected Range: %1$s</string>
+
+    //Header
+    <string name="lock_parameter">Lock Parameter</string>
+    <string name="edit_header">Edit</string>
+</resources>
