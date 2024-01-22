@@ -1,4 +1,3 @@
-![Screenshot_20240121-235049_Door Config](https://github.com/ArunInbasekaran/Door-Config/assets/157306749/c76ce31e-a3de-455d-b722-8a8e31c86a5d)
 
 ### Door Config
 Application used to config primary and secondary door parameters using simple MVVM architecture pattern.
