@@ -37,7 +37,7 @@ public class ConfigRemoteDataSource implements IConfigDataSource.Remote{
     /**
      * Network call to get the response from API
      * Nested Object class is converted into list of objects
-     * @param callback
+     * @param callback callback
      */
     @Override
     public void getConfig(IConfigRepository.LoadConfigCallback callback) {

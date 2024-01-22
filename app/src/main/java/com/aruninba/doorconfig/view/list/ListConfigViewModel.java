@@ -4,9 +4,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.aruninba.doorconfig.data.mapper.DoorConfigParameter;
-import com.aruninba.doorconfig.data.model.DoorConfigResponse;
 import com.aruninba.doorconfig.data.repository.IConfigRepository;
+import com.aruninba.doorconfig.utils.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,7 @@ import java.util.List;
 public class ListConfigViewModel extends ViewModel {
 
     private final MutableLiveData<List<DoorConfigParameter>> configLiveData = new MutableLiveData<>();
+    private final MutableLiveData<List<DoorConfigParameter>> filteredConfigLiveData = new MutableLiveData<>();
     private final MutableLiveData<String> showErrorMessageLiveData = new MutableLiveData<>();
     private final MutableLiveData<Void> showLoadingLiveData = new MutableLiveData<>();
     private final MutableLiveData<Void> hideLoadingLiveData = new MutableLiveData<>();
@@ -50,8 +52,32 @@ public class ListConfigViewModel extends ViewModel {
         this.configLiveData.postValue(doorConfigResponse);
     }
 
+    private void setFilteredConfigLiveData(List<DoorConfigParameter> doorConfigResponse) {
+        this.filteredConfigLiveData.postValue(doorConfigResponse);
+    }
+
     public void onConfigClicked(DoorConfigParameter doorConfig) {
         navigateToDetailsLiveData.postValue(doorConfig);
+    }
+
+    /**
+     * Get results based on the search query
+     * @param query searchText
+     */
+    public void getFilteredData(String query) {
+        List<DoorConfigParameter> filteredList = new ArrayList<>();
+
+        if(Constants.isEmpty(query)){
+            setFilteredConfigLiveData(mDoorConfigResponse);
+            return;
+        }
+
+        for (DoorConfigParameter doorConfigResponse : mDoorConfigResponse) {
+            if (doorConfigResponse.getTitle().toLowerCase().contains(query)) {
+                filteredList.add(doorConfigResponse);
+            }
+        }
+        setFilteredConfigLiveData(filteredList);
     }
 
     private class ConfigCallback implements IConfigRepository.LoadConfigCallback {
@@ -79,6 +105,9 @@ public class ListConfigViewModel extends ViewModel {
      **/
     public LiveData<List<DoorConfigParameter>> getConfigLiveData() {
         return configLiveData;
+    }
+    public LiveData<List<DoorConfigParameter>> getFilteredConfigLiveData() {
+        return filteredConfigLiveData;
     }
 
     public LiveData<Void> getShowLoadingLiveData() {

@@ -83,20 +83,7 @@ public class ListConfigActivity extends BaseActivity<ActivityListConfigBinding,
                 if(doorConfigResponseList.isEmpty()){
                     return;
                 }
-
-                if(Constants.isEmpty(query.toString())){
-                    mConfigAdapter.setItems(doorConfigResponseList);
-                    return;
-                }
-                List<DoorConfigParameter> filteredList = new ArrayList<>();
-
-                for (int i = 0; i < doorConfigResponseList.size(); i++) {
-                    if (doorConfigResponseList.get(i).getTitle().toLowerCase().contains(query)) {
-                        filteredList.add(doorConfigResponseList.get(i));
-                    }
-                }
-                binding.rvConfig.removeAllViews();
-                mConfigAdapter.setItems(filteredList);
+                viewModel.getFilteredData(query.toString().toLowerCase());
             }
         });
     }
@@ -107,6 +94,11 @@ public class ListConfigActivity extends BaseActivity<ActivityListConfigBinding,
     private void observeViewModel() {
 
         viewModel.getShowLoadingLiveData().observe(this, aVoid -> binding.progressBar.setVisibility(View.VISIBLE));
+
+        viewModel.getFilteredConfigLiveData().observe(this, doorConfigParameters -> {
+            binding.rvConfig.removeAllViews();
+            mConfigAdapter.setItems(doorConfigParameters);
+        });
 
         viewModel.getHideLoadingLiveData().observe(this, aVoid -> binding.progressBar.setVisibility(View.GONE));
 
@@ -123,7 +115,7 @@ public class ListConfigActivity extends BaseActivity<ActivityListConfigBinding,
 
     /**
      * Go to edit screen for editing the parameter
-     * @param configTitle
+     * @param configTitle selected title
      */
     private void GoToEdit(@Nullable String configTitle) {
         Intent intent = new Intent(this, EditConfigActivity.class);

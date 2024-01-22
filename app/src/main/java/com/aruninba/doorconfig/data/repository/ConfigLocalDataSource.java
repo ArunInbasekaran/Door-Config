@@ -32,7 +32,7 @@ public class ConfigLocalDataSource implements IConfigDataSource.Local{
 
     /**
      * Get config data from DB
-     * @param callback
+     * @param callback result callback
      */
     @Override
     public void getConfig(IConfigRepository.LoadConfigCallback callback) {
@@ -49,7 +49,7 @@ public class ConfigLocalDataSource implements IConfigDataSource.Local{
 
     /**
      * To save config data
-     * @param config
+     * @param config list of configs
      */
     @Override
     public void saveConfig(List<DoorConfigParameter> config) {
@@ -59,7 +59,7 @@ public class ConfigLocalDataSource implements IConfigDataSource.Local{
 
     /**
      * To update edited record
-     * @param doorConfigParameter
+     * @param doorConfigParameter edited config
      */
     @Override
     public void UpdateConfig(DoorConfigParameter doorConfigParameter) {

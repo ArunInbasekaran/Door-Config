@@ -91,7 +91,7 @@ public class EditConfigActivity extends BaseActivity<ActivityEditConfigBinding, 
      * Update the ui with selected parameter for editing
      * Manipulate ui with seek bar for range and radio button for values
      *
-     * @param doorConfigParameter
+     * @param doorConfigParameter selected config
      */
     private void updateUi(DoorConfigParameter doorConfigParameter) {
         mDoorConfigParameter = doorConfigParameter;
@@ -122,9 +122,9 @@ public class EditConfigActivity extends BaseActivity<ActivityEditConfigBinding, 
     /**
      * Update seek bar range value - Max and Min
      *
-     * @param sbConfig
-     * @param doorConfigParameter
-     * @param doorType
+     * @param sbConfig seekbar(primary/secondary)
+     * @param doorConfigParameter selected config
+     * @param doorType  primary/secondary
      */
     private void UpdateSeekBar(SeekBar sbConfig, DoorConfigParameter doorConfigParameter, Constants.DoorType doorType) {
         sbConfig.setMax(doorConfigParameter.getRange().getMax());
@@ -146,9 +146,9 @@ public class EditConfigActivity extends BaseActivity<ActivityEditConfigBinding, 
     /**
      * Get selected progress value to update the seek bar
      *
-     * @param myDefault
-     * @param selectedDoorConfig
-     * @return int
+     * @param myDefault default range
+     * @param selectedDoorConfig selected config
+     * @return int selected value
      */
     private int getSelectedProgress(String myDefault, String selectedDoorConfig) {
         try {
@@ -191,9 +191,9 @@ public class EditConfigActivity extends BaseActivity<ActivityEditConfigBinding, 
     /**
      * Check selected value to update radio button
      *
-     * @param value
-     * @param myDefault
-     * @param selectedDoorConfig
+     * @param value value
+     * @param myDefault default value
+     * @param selectedDoorConfig previously selected config
      * @return true/false
      */
     private boolean isSelectedValue(String value, String myDefault, String selectedDoorConfig) {
@@ -202,7 +202,7 @@ public class EditConfigActivity extends BaseActivity<ActivityEditConfigBinding, 
 
     /**
      * To update the header and descriptions
-     * @param doorConfigParameter
+     * @param doorConfigParameter selected config
      */
     private void UpdateContentText(DoorConfigParameter doorConfigParameter) {
         binding.tvConfigType.setText(doorConfigParameter.getTitle());

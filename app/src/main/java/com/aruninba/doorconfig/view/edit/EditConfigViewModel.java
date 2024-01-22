@@ -24,7 +24,7 @@ public class EditConfigViewModel extends ViewModel {
 
     /**
      * Get the selected config from list
-     * @param selectedParameter
+     * @param selectedParameter selected config
      */
     public void getSelectedConfigModel(String selectedParameter) {
         configRepository.getConfig(new IConfigRepository.LoadConfigCallback() {
@@ -63,7 +63,7 @@ public class EditConfigViewModel extends ViewModel {
 
     /**
      * Update the edited config in local db
-     * @param mDoorConfigParameter
+     * @param mDoorConfigParameter  edited congig
      */
     public void UpdateConfig(DoorConfigParameter mDoorConfigParameter) {
         configRepository.UpdateConfig(mDoorConfigParameter);
